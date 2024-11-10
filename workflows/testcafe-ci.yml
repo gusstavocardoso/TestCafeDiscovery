@@ -1,0 +1,41 @@
+name: TestCafe CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build do Projeto
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v2
+
+      - name: Configura Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Instala dependencias
+        run: npm install
+
+      - name: Atribui variaveis de ambiente
+        run: |
+          echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
+          echo "USER=${{ secrets.USER }}" >> .env
+          echo "PASS=${{ secrets.PASS }}" >> .env
+  test:
+    name: Testes End-to-End
+    runs-on: windows-latest
+    needs: [build]
+
+    steps:
+      - name: Executando os testes
+        run: npm run ci
