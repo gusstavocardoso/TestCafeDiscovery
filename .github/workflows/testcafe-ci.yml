@@ -14,13 +14,13 @@ jobs:
         node-version: [20.x]
 
     steps:
-      - name: Checkout do código
-        uses: actions/checkout@v2
-
       - name: Configura Node.js
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+          
+      - name: Checkout do código
+        uses: actions/checkout@v2      
 
       - name: Instala dependencias
         run: npm install
