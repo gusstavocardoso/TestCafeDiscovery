@@ -39,4 +39,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Executando os testes
-        run: npm run ci
+        run: npm run headless
