@@ -4,15 +4,14 @@ on:
   push:
     branches:
       - main
-
+      
 jobs:
-  build:
-    name: Build do Projeto
+  test:
     runs-on: windows-latest
 
     strategy:
       matrix:
-        node-version: [22.x]
+        node-version: [20.x]
 
     steps:
       - name: Checkout do código
@@ -23,9 +22,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Instala TestCafe
-        uses: DevExpress/testcafe-action@latest
-
       - name: Instala dependencias
         run: npm install
 
@@ -34,12 +30,6 @@ jobs:
           echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
           echo "USER=${{ secrets.USER }}" >> .env
           echo "PASS=${{ secrets.PASS }}" >> .env
-  test:
-    name: Testes End-to-End
-    runs-on: windows-latest
-    needs: [build]
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Executando os testes
+      - name: Executa os testes
         run: npm run ci
