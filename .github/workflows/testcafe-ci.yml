@@ -6,7 +6,8 @@ on:
       - main
       
 jobs:
-  test:
+  build:
+    name: Build do Projeto
     runs-on: windows-latest
 
     strategy:
@@ -30,6 +31,12 @@ jobs:
           echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
           echo "USER=${{ secrets.USER }}" >> .env
           echo "PASS=${{ secrets.PASS }}" >> .env
+  
+  test:
+    name: Testes End-to-End
+    runs-on: windows-latest
+    needs: build
 
-      - name: Executa os testes
+    steps:
+      - name: Executando os testes
         run: npm run ci
