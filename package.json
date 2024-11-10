@@ -1,0 +1,24 @@
+{
+  "name": "testcafe-discovery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "rmdir /s /q reporter && testcafe chrome tests/*.js --reporter acd-html-reporter --reportFile reporter/html",
+    "headless": "rmdir /s /q reporter && testcafe chrome:headless tests/*.js --reporter acd-html-reporter --reportFile reporter/html",
+    "format": "npx @biomejs/biome format --write ./tests ./pages ./data ./testcaferc.js",
+    "lint": "npx @biomejs/biome lint --write ./tests ./pages ./data ./testcaferc.js",
+    "ci": "npm run format && npm run test:headless"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "testcafe": "^3.7.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "testcafe-reporter-acd-html-reporter": "^2.0.1"
+  }
+}
