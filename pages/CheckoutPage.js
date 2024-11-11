@@ -5,6 +5,8 @@ class CheckoutPage {
 		this.boleto = Selector("#boleto");
 		this.pix = Selector("#cartao");
 		this.order = Selector("#finalizeOrder");
+		this.productValidation = Selector("#cartItems p");
+		this.orderMessage = Selector("#orderMessage");
 	}
 
 	async paymentMethod(paymentMethod) {

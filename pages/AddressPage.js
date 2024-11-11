@@ -7,6 +7,7 @@ class AddressPage {
 		this.state = Selector("#state");
 		this.option = Selector(this.state).find("option");
 		this.addressButton = Selector('#addressForm button[type="submit"]');
+		this.addressMessage = Selector("#addressMessage");
 	}
 
 	async userAddress(street, city, state) {

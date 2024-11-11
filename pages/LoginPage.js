@@ -6,6 +6,7 @@ class LoginPage {
 		this.password = Selector("#password");
 		this.rememberMe = Selector("#rememberMe");
 		this.access = Selector('#loginForm button[type="submit"]');
+		this.loginMessage = Selector("#loginMessage");
 	}
 
 	async loginUser(user, pass) {

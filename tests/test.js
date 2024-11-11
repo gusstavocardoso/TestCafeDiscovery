@@ -17,24 +17,22 @@ fixture`TestCafe Discovery`.page`${config.baseUrl}`;
 
 test("Should complete order successfully", async (t) => {
 	await loginPage.loginUser(username, password);
-	await t
-		.expect(Selector("#loginMessage").textContent)
-		.eql("Login bem-sucedido!");
+	await t.expect(loginPage.loginMessage.textContent).eql("Login bem-sucedido!");
 
 	await productPage.addProcuct("pick");
 
 	await addressPage.userAddress(address.address, address.city, address.state);
 	await t
-		.expect(Selector("#addressMessage").textContent)
+		.expect(addressPage.addressMessage.textContent)
 		.eql("Endereço salvo com sucesso!");
 
 	await checkoutPage.paymentMethod();
 	await t
-		.expect(Selector("#cartItems p").textContent)
+		.expect(checkoutPage.productValidation.textContent)
 		.eql("Produto 1 - R$ 100.00 x 1 = R$ 100.00");
 
 	await checkoutPage.finalizeOrder();
 	await t
-		.expect(Selector("#orderMessage").textContent)
+		.expect(checkoutPage.orderMessage.textContent)
 		.eql("Pedido finalizado com sucesso!");
 });
