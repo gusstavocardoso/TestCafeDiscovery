@@ -1,4 +1,3 @@
-import { Selector } from "testcafe";
 import config from "../../testcaferc.js";
 import dotenv from "dotenv";
 

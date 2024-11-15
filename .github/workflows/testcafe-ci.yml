@@ -37,9 +37,9 @@ jobs:
           echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
           echo "USER=${{ secrets.USER }}" >> .env
           echo "PASS=${{ secrets.PASS }}" >> .env
-          echo "BASE_URL=${{ secrets.API_URL }}" >> .env
-          echo "USER=${{ secrets.USER_API }}" >> .env
-          echo "PASS=${{ secrets.PASS_API }}" >> .env
+          echo "URL_API=${{ secrets.URL_API }}" >> .env
+          echo "USER_API=${{ secrets.USER_API }}" >> .env
+          echo "PASS_API=${{ secrets.PASS_API }}" >> .env
         
       - name: Executa os testes   
         run: npm run ci
