@@ -9,24 +9,5 @@ module.exports = {
 	skipJsErrors: true,
 	debugMode: true,
 	debugOnFail: true,
-	customActions: {
-		async messageValidation(validation) {
-			switch (validation) {
-				case "login":
-					await this.Selector("#loginMessage").textContent;
-					break;
-				case "address":
-					await this.Selector("#addressMessage").textContent;
-					break;
-				case "cart":
-					await this.Selector("#cartItems p").textContent;
-					break;
-				case "order":
-					await this.Selector("#orderMessage").textContent;
-					break;
-				default:
-					break;
-			}
-		},
-	},
+	customActions: {},
 };

@@ -6,8 +6,8 @@ on:
       - main
       
 jobs:
-  build:
-    name: Build do Projeto
+  setup:
+    name: Setup do Projeto
     runs-on: windows-latest
 
     strategy:
@@ -23,10 +23,10 @@ jobs:
   test:
     name: Testes End-to-End
     runs-on: windows-latest
-    needs: build
+    needs: setup
 
     steps:
-      - name: Checkout do código
+      - name: Checkout do codigo
         uses: actions/checkout@v2      
 
       - name: Instala dependencias
@@ -37,6 +37,9 @@ jobs:
           echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
           echo "USER=${{ secrets.USER }}" >> .env
           echo "PASS=${{ secrets.PASS }}" >> .env
+          echo "BASE_URL=${{ secrets.API_URL }}" >> .env
+          echo "USER=${{ secrets.USER_API }}" >> .env
+          echo "PASS=${{ secrets.PASS_API }}" >> .env
         
-      - name: Executando os testes   
+      - name: Executa os testes   
         run: npm run ci

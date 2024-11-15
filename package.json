@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "testcafe chrome tests/*.js --reporter acd-html-reporter --reportFile reporter/html && rmdir /s /q reporter",
-    "headless": "testcafe chrome:headless tests/*.js --reporter acd-html-reporter --reportFile reporter/html && rmdir /s /q reporter",
+    "test": "testcafe chrome tests/ui/*.js --reporter acd-html-reporter --reportFile reporter/html && rmdir /s /q reporter",
+    "headless": "testcafe chrome:headless tests/ui/*.js --reporter acd-html-reporter --reportFile reporter/html && rmdir /s /q reporter",
+    "requests": "testcafe chrome:headless tests/api/*.js",
     "format": "npx @biomejs/biome format --write ./tests ./pages ./data ./testcaferc.js",
     "lint": "npx @biomejs/biome lint --write ./tests ./pages ./data ./testcaferc.js",
-    "ci": "npm run format && npm run headless"
+    "ci": "npm run format && npm run headless && npm run requests"
   },
   "keywords": [],
   "author": "",
